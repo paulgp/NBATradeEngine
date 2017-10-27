@@ -28,3 +28,28 @@ teamwins_fun <- function(teamProj) {
 
     return(teamWins)
 }
+
+## Takes as input the ouput of teamwins_fun and an owner name and returns the team wins
+## and surplus relative to the baseline projection
+
+ownerwins_fun <- function(teamWins,Owner) {
+
+    wins <- (teamWins %>% filter(teamProj.Owner == Owner) %>% select(RankedProj.wins))[1,1]
+    surplus <- wins - (baseWins %>% filter(teamProj.Owner == Owner) %>% select(RankedProj.wins))[1,1]
+
+    return = list(wins,surplus)
+
+}
+
+## Moves players from one team to another in the playerProj file
+
+replaceplayer_fun <- function(PlayerProj,Player1,Player2) {
+    
+    ## Replace the owner of each player based on trade
+    new <- playerProj
+    new$Owner[new$Name == Player1] <- Own2
+    new$Owner[new$Name == Player2] <- Own1
+
+    return(new)
+    
+}
