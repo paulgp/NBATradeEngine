@@ -63,4 +63,8 @@ df <- data.frame(Player1 = Player1_vec, Player2 = Player2_vec, Own1 = Own1_vec, 
 
 df$TotSurplus = rowSums(df[,c('Own1Surplus','Own2Surplus')])
 
-write.csv(df,"Output/Trades1for1.csv")
+df2 <- plyr::rename(df, c("Player1"="Player2", "Player2"="Player1","Own1"="Own2","Own2"="Own1","Own1Wins"="Own2Wins","Own2Wins"="Own1Wins","Own1Surplus"="Own2Surplus","Own2Surplus"="Own1Surplus"))
+
+df_final = rbind(df,df2)
+
+write.csv(df_final,"Output/Trades1for1.csv")
