@@ -1,13 +1,13 @@
 # This file imports the Basketball Monster Projections, munges and saves dataframe
 
-PlayerProjs <- read.csv(file="Data/BBM_Projections.csv", header=TRUE, sep=",")
+playerProj <- read.csv(file="Data/BBM_Projections.csv", header=TRUE, sep=",")
 
 ## Munge data  ----------------------------------------
                                                        
 ## Field goals made per game                           
-PlayerProjs$fgm.g = PlayerProjs$fga.g * PlayerProjs$fg.
+playerProj$fgm.g = playerProj$fga.g * playerProj$fg.
                                                        
 ## Free throws made per game                           
-PlayerProjs$ftm.g = PlayerProjs$fta.g * PlayerProjs$ft.
+playerProj$ftm.g = playerProj$fta.g * playerProj$ft.
 
-save(PlayerProjs, file="Output/PlayerProjs.Rdata")
+save(playerProj, file="Output/playerProj.Rdata")
